@@ -125,17 +125,17 @@
 #    print i
 #    print '一轮结束'
 
-d = {'a': 1,'b': 2,'c': 3}
-for key in d:
-    print (key)
-for value in d.values():
-    print value
-for k,v in d.items():
-    print k ,v
+#d = {'a': 1,'b': 2,'c': 3}
+#for key in d:
+ #   print (key)
+#for value in d.values():
+#    print value
+#for k,v in d.items():
+#    print k ,v
 
-for ch in 'abc':
-    print (ch)
-print '----------------------------------------------------'
+#for ch in 'abc':
+#    print (ch)
+#print '----------------------------------------------------'
 from collections import Iterable
 print isinstance('abc', Iterable)#str是否可迭代
 
@@ -143,5 +143,44 @@ print isinstance([1,2,3], Iterable)# list是否可迭代
 
 print isinstance(123,Iterable)#整数是否可迭代
 
-for i ,value in enumerate(['a','b','c']):
-    print(i,value)
+#for i ,value in enumerate(['a','b','c']):
+ #   print(i,value)
+
+#for x, y in ((1, 1), (2, 4), (3, 9)):
+ #   print(x, y)
+
+
+#for i, value in enumerate(['A', 'B', 'C']):
+ #    print(i, value)
+
+#列表生成
+
+print list(range(1,10))#python2.x 中要返回1~10的列表，需要list（range（1,11)),python3.x 中可以正常输出
+
+
+l=[]
+for x in range(1,11):
+    l.append(x*x)
+print l
+
+print[x*x for x in range(1,11)] #取1~10的平方
+
+print[x*x for x in range(1,11) if x%2==0]#取1~10偶数的平方
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
