@@ -167,7 +167,11 @@ print[x*x for x in range(1,11)] #取1~10的平方
 
 print[x*x for x in range(1,11) if x%2==0]#取1~10偶数的平方
 
+print [m + n for m in 'ABC' for n in'XYZ']
 
+import os
+[d for d in os.listdir('.')]
+print['.emacs','.ssh','.Trash','Desktop']
 
 
 
