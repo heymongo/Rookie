@@ -136,12 +136,12 @@
 #for ch in 'abc':
 #    print (ch)
 #print '----------------------------------------------------'
-from collections import Iterable
-print isinstance('abc', Iterable)#str是否可迭代
+#from collections import Iterable
+#print isinstance('abc', Iterable)#str是否可迭代
 
-print isinstance([1,2,3], Iterable)# list是否可迭代
+#print isinstance([1,2,3], Iterable)# list是否可迭代
 
-print isinstance(123,Iterable)#整数是否可迭代
+#print isinstance(123,Iterable)#整数是否可迭代
 
 #for i ,value in enumerate(['a','b','c']):
  #   print(i,value)
@@ -155,35 +155,132 @@ print isinstance(123,Iterable)#整数是否可迭代
 
 #列表生成
 
-print list(range(1,10))#python2.x 中要返回1~10的列表，需要list（range（1,11)),python3.x 中可以正常输出
+#print list(range(1,10))#python2.x 中要返回1~10的列表，需要list（range（1,11)),python3.x 中可以正常输出
 
 
-l=[]
-for x in range(1,11):
-    l.append(x*x)
+#l=[]
+#for x in range(1,11):
+ #   l.append(x*x)
+#print l
+
+#print[x*x for x in range(1,11)] #取1~10的平方
+
+#print[x*x for x in range(1,11) if x%2==0]#取1~10偶数的平方
+
+#print [m + n for m in 'ABC' for n in'XYZ']
+
+#import os
+#[d for d in os.listdir('.')]
+#print['.emacs','.ssh','.Trash','Desktop']
+
+#-------------------------------------------------------------------------------------------------------------------------
+##迭代(Iteration)
+
+#d = {'a':1,'b':2,'c':3}
+#for value in d.iteritems():
+#    print value
+
+
+#from collections import Iterable
+#print isinstance('x',Iterable)
+
+#for i ,value in enumerate(['a','b','c']):
+#    print i,value
+
+#for x,y in[(0,1),(1,2),(2,3)]:
+#    print x,y
+#--------------------------------------------------------------------------------------------------------------------------
+##列表生成式
+#print range(0,10)
+##生成器
+#l = [ x * x for x in range(10)]
+#print l
+
+#创建一个生成器
+#g = ( x * x for x in range(10))
+#generator保存的是算法，每次调用next()，就计算出下一个元素的值，直到计算到最后一个元素，没有更多的元素时，抛出StopIteration的错误
+#print g.next()
+#print g.next()
+#print g.next()
+
+#当然，上面这种不断调用next()方法实在是太变态了，正确的方法是使用for循环，因为generator也是可迭代对象
+#g = ( x * x for x in range(10))
+#for n in g:
+#    print n
+
+#fib函数实际上是定义了斐波拉契数列的推算规则，可以从第一个元素开始，推算出后续任意的元素，这种逻辑其实非常类似generator
+#def fib(max):
+#    n, a, b = 0, 0, 1
+#    while n < max:
+#        print b
+#        a, b = b, a + b
+#        n = n + 1
+#print fib(10)
+
+def fib(max):
+    n,a,b = 0,0,1
+    while n<max:
+        yield b
+        a,b = b,a + b
+        n = n + 1
+
+#print fib(60)
+
+
+#def odd():
+#    print 'step 1'
+#    yield 1
+#    print 'step 2'
+#    yield 2
+
+#o = odd()
+#print o.next()
+#print o.next()
+
+#for n in fib(6):
+#    print n
+#------------------------------------------------------------------------------------------------------------------------
+#函数式编程
+#高阶函数
+#调用函数print abs(-10)
+#输出函数本身print abs
+#将结果赋值给变量，然后输出变量:
+#x = abs(-11)
+#print x
+
+#将变量指向一个函数:
+#f=abs
+#print f(-33)
+
+#f = abs
+#print f
+
+#把abs指向10后，就无法通过abs(-10)调用该函数了！因为abs这个变量已经不指向求绝对值函数了:
+#abs = 10
+#print abs(-10)
+
+def add(x,y,f):
+    return f(x) +f(y)
+print add(-5,6,abs)
+#当我们调用add(-5, 6, abs)时，参数x，y和f分别接收-5，6和abs，根据函数定义，我们可以推导计算过程为：
+#x ==> -5
+#y ==> 6
+#f ==> abs
+#f(x) + f(y) ==> abs(-5) + abs(6) ==> 11
+#编写高阶函数，就是让函数的参数能够接收别的函数．把函数作为参数传入，这样的函数称为高阶函数，函数式编程就是指这种高度抽象的编程范式。
+
+#map/reduce
+#map()函数接收两个参数，一个是函数，一个是序列，map将传入的函数依次作用到序列的每个元素，并把结果作为新的list返回
+def f(x):
+     return x * x
+print map(f, [1,2,3,4,5,6])
+
+l = []
+for n in []:
+    l.append(f(n))
 print l
-
-print[x*x for x in range(1,11)] #取1~10的平方
-
-print[x*x for x in range(1,11) if x%2==0]#取1~10偶数的平方
-
-print [m + n for m in 'ABC' for n in'XYZ']
-
-import os
-[d for d in os.listdir('.')]
-print['.emacs','.ssh','.Trash','Desktop']
-
-
-
-
-
-
-
-
-
-
-
-
+#把list所有数据转为字符串
+print map(str, [1,2,3,4,5])
 
 
 
