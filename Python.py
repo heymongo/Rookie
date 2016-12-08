@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+#已运行OK 的默认注释
 #def my_abs(x):
 #    if x >=0:
 #        return x
@@ -217,12 +217,12 @@
 #        n = n + 1
 #print fib(10)
 
-def fib(max):
-    n,a,b = 0,0,1
-    while n<max:
-        yield b
-        a,b = b,a + b
-        n = n + 1
+#def fib(max):
+#    n,a,b = 0,0,1
+#    while n<max:
+#        yield b
+#        a,b = b,a + b
+#        n = n + 1
 
 #print fib(60)
 
@@ -259,9 +259,9 @@ def fib(max):
 #abs = 10
 #print abs(-10)
 
-def add(x,y,f):
-    return f(x) +f(y)
-print add(-5,6,abs)
+#def add(x,y,f):
+#    return f(x) +f(y)
+#print add(-5,6,abs)
 #当我们调用add(-5, 6, abs)时，参数x，y和f分别接收-5，6和abs，根据函数定义，我们可以推导计算过程为：
 #x ==> -5
 #y ==> 6
@@ -271,16 +271,61 @@ print add(-5,6,abs)
 
 #map/reduce
 #map()函数接收两个参数，一个是函数，一个是序列，map将传入的函数依次作用到序列的每个元素，并把结果作为新的list返回
-def f(x):
-     return x * x
-print map(f, [1,2,3,4,5,6])
+#def f(x):
+#     return x * x
+#print map(f, [1,2,3,4,5,6])
 
-l = []
-for n in []:
-    l.append(f(n))
-print l
+#l = []
+#for n in []:
+#    l.append(f(n))
+#print l
 #把list所有数据转为字符串
-print map(str, [1,2,3,4,5])
+#print map(str, [1,2,3,4,5])
+
+#reduce(f, [*1,*2,,*3,*4]) = f(f(f(*1,*2,*3), *4))
+#序列求和
+#def add(x,y):
+#    return x + y
+#print reduce(add,[1,3,5,7,9])
+#把序列[1,3,5,7,9]变成整数13579
+#def fn(x,y):
+#    return x*10+y
+#print reduce(fn,[1,3,5,7,9])
+#将字符串转化成整数
+#def str2int(s):
+#    def fn(x,y):
+#        return x*10+ y
+#    def char2num(s):
+#        return {'0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9}[s]
+#    return reduce(fn,map(char2num, s))
+
+
+#def standard(L):
+#    return  map(str.title,L)
+
+#print standard(['aMAND','BBAY','systerm'])
+#求积
+#def prod(L):
+#    def lay(x,y):
+#        return x*y
+#    return reduce(lay,L)
+#print prod([1,2,3,4])
+
+#Python内建的filter()函数用于过滤序列.和map()类似，filter()也接收一个函数和一个序列。
+# 和map()不同的时，filter()把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素
+# 1.在一个list中删掉偶数，只保留奇数，如下：n%2==1取奇数，n%2==0取偶数
+def is_odd(n):
+    return n % 2 == 0
+print filter(is_odd, [1,2,4,5,6,7,9,10])
+
+#去除序列中的空字符串。ps：字符串本身带空格的不支持去掉，例如'A  '
+def not_empty(s):
+    return s and s.strip()
+print filter(not_empty, ['A ', '', ' ','aa',None])
+
+
+
+
 
 
 
